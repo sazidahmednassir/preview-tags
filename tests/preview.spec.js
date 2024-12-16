@@ -20,7 +20,9 @@ for (const record of records) {
     // Directly navigate to the target page
     await page.goto('https://author-p50407-e476655.adobeaemcloud.com/ui#/aem/libs/cq/workflow/admin/console/content/models.html');
     await page.getByLabel('Email address').fill('nassir.sazidahmed@abbvie.com')
+
     await page.getByRole('button', { name: 'Continue' }).click()
+    await page.waitForTimeout(4000);
     await page.locator('#username').fill('SAZIDNX')
     await page.locator('#password').fill('One@500#$')
     await page.getByText('Sign On').click()
@@ -28,7 +30,6 @@ for (const record of records) {
     // Perform any post-login actions
     await page.waitForTimeout(15000);
   
-    //again
     await page.waitForTimeout(20000)
     await page.locator('iframe[name="Main Content"]').contentFrame().getByRole('button', { name: 'Open left rail for additional' }).click();
     await page.locator('iframe[name="Main Content"]').contentFrame().getByLabel('List').getByText('alt+1Search').click();

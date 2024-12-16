@@ -28,14 +28,6 @@ for (const record of records) {
     // Perform any post-login actions
     await page.waitForTimeout(15000);
   
-    //await page.locator('iframe[name="Main Content"]').contentFrame().getByRole('checkbox', { name: 'Select OUS Commercial Dynamic Workflow Activate No Description v1.9' }).click();
-    // await page.locator('iframe[name="Main Content"]').contentFrame().getByRole('button', { name: 'Open left rail for additional' }).click();
-    // await page.locator('iframe[name="Main Content"]').contentFrame().getByLabel('List').getByText('alt+1Search').click();
-    // await page.locator('iframe[name="Main Content"]').contentFrame().getByLabel('Enter Keyword').fill('OUS Commercial Dynamic Workflow Activate')
-    // await page.waitForTimeout(3000)
-    // await page.keyboard.press('Enter');
-    // await page.waitForTimeout(3000)
-  
     //again
     await page.waitForTimeout(20000)
     await page.locator('iframe[name="Main Content"]').contentFrame().getByRole('button', { name: 'Open left rail for additional' }).click();

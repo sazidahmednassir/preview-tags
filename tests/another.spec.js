@@ -50,20 +50,23 @@ test.describe.serial('Preview Page Activate', () => {
         await page.locator('#username').fill('SAZIDNX');
         await page.locator('#password').fill('One@500#$');
         await page.getByText('Sign On').click();
-        await page.waitForTimeout(15000);
+        await page.waitForTimeout(20000);
+        
+        await page.locator('iframe[name="Main Content"]').contentFrame().getByRole('button', { name: 'Open left rail for additional' }).click();
+        await page.locator('iframe[name="Main Content"]').contentFrame().getByLabel('List').getByText('alt+1Search').click();
+        await page.locator('iframe[name="Main Content"]').contentFrame().getByLabel('Enter Keyword').fill('OUS Commercial Preview Activate')
+        await page.waitForTimeout(3000)
+        await page.keyboard.press('Enter');
+        await page.waitForTimeout(20000)
 
         // Simulate navigating and entering content
-        await page.locator('iframe[name="Main Content"]').contentFrame()
-          .getByRole('button', { name: 'Open left rail for additional' }).click();
-
-        await page.locator('iframe[name="Main Content"]').contentFrame()
-          .getByLabel('Enter Keyword').fill(tagPath);
-
-        await page.keyboard.press('Enter');
-        await page.waitForTimeout(3000);
-
-        await page.locator('iframe[name="Main Content"]').contentFrame()
-          .getByRole('button', { name: 'Run' }).click();
+        await page.locator('iframe[name="Main Content"]').contentFrame().getByLabel('Card View').click();
+  
+       await page.waitForTimeout(2000);
+       await page.locator('iframe[name="Main Content"]').contentFrame().getByRole('checkbox', { name: 'Select', exact: true }).click();
+       await page.locator('iframe[name="Main Content"]').contentFrame().getByRole('button', { name: 'Start Workflow' }).click();
+       await page.locator('iframe[name="Main Content"]').contentFrame().getByLabel('Payload *').fill(record.Tags)
+       await page.locator('iframe[name="Main Content"]').contentFrame().getByRole('button', { name: 'Run' }).click()
 
       } catch (error) {
         console.error(`Test failed for Tag: ${tagPath}`, error);

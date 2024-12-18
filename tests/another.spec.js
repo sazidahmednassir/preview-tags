@@ -1,7 +1,8 @@
 import { test } from '@playwright/test';
 import fs from 'fs';
 import path from 'path';
-import { parse, stringify } from 'csv-parse/sync';
+import { parse } from 'csv-parse/sync';
+import { stringify } from 'csv-stringify/sync'; 
 
 // Path to the CSV file
 const csvFilePath = path.join(__dirname, "../tags.csv");
